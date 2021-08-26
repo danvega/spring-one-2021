@@ -1,3 +1,19 @@
-Spring One 2021
+# Spring One 2021
 
-This repository contains all of the examples in my presentation "Full Stack Java Development with Spring Boot & Vue".
+This is a collection of code and resources for my presentation at SpringOne 2021 title "Full-Stack Development with Spring Boot and VueJS".
+# Slide Deck
+
+  [FullStackJava]()
+# Code
+
+- Progressive Vue
+- Monolith
+- Ice Cream Store (Monolith)
+- Ice Cream Store (SPA)
+
+# Resources
+
+- [My Website]()
+- [Spring Boot]()
+- [Vue 3]()
+- [Vite]
