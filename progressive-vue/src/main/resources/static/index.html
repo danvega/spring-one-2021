@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ice Cream</title>
+    <!-- don't do this in production -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body class="bg-gray-100 bg-opacity-20">
+
+    <div id="app" class="flex flex-col min-h-screen">
+
+        <header class="bg-pink-200 h-48">
+            <div class="container mx-auto py-8 flex items-center">
+                <menu class="flex-1 flex space-x-4">
+                    <a href="#" class="bg-pink-400 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Order Online</a>
+                    <a href="#" class="text-gray-700 hover:bg-pink-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Locations</a>
+                    <a href="#" class="text-gray-700 hover:bg-pink-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About Us</a>
+                    <a href="#" class="text-gray-700 hover:bg-pink-400 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact Us</a>
+                </menu>
+                <div class="flex-1 ">
+                    <img src="/img/ice_cream.png" class="h-28"/>
+                </div>
+                <div class="flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span class="ml-1 font-bold">{{cartTotal}}</span> <span class="ml-2">item(s)</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="container mx-auto py-8 flex-1">
+
+            <transition name="fade">
+                <div v-if="isSaved" class="border border-green-400 bg-green-300 text-grey-600 p-4 rounded mb-4">
+                    The product was successfully added to the cart!
+                </div>
+            </transition>
+
+            <h2 class="text-4xl font-bold text-gray-800 mb-8">Scoops</h2>
+
+            <section class="grid grid-cols-2 gap-16">
+
+                <form v-for="product in products" method="post" @submit.prevent="onAddToCart($event)">
+                    <input type="hidden" name="id" :value="product.id"/>
+                    <input type="hidden" name="name" :value="product.name"/>
+                    <input type="hidden" name="price" :value="product.price"/>
+                    <input type="hidden" name="category" :value="product.category"/>
+                    <div class="bg-white border-2 rounded-none flex p-4">
+                        <div class="flex-1">
+                            <div class="flex flex-col">
+                                <h3>{{product.name}}</h3>
+                                <div>{{product.price}}</div>
+                                <div class="mt-8">
+                                    <button class="bg-blue-400 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded flex">
+                                        <svg v-if="isSaving && currentProduct == product.id" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-blue-100 rounded-full h-32 w-32 text-2xl font-medium">
+                            <p class="text-center mt-8">{{product.name}}</p>
+                        </div>
+                    </div>
+                </form>
+
+            </section>
+        </main>
+
+        <footer class="bg-pink-200 h-24 p-4">
+            <div class="container mx-auto text-gray-700 text-sm">
+                <p class="text-center">Contact us at info@homemadeicecream.com.</p>
+                <p class="text-center">We're here to help.</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="/js/main.js"></script>
+
+</body>
+</html>
