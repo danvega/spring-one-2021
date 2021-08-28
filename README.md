@@ -10,8 +10,8 @@ Are you interested in building full-stack web applications with Spring Boot and 
 
 - [Progressive Vue](./progressive-vue)
 - [Monolith](./monolith)
-- [Ice Cream Store](./ice-cream-store)
-- [Ice Cream Store](./ice-cream-store-rest)
+- [Ice Cream Store - Monolith](./ice-cream-store)
+- [Ice Cream Store - REST](./ice-cream-store-rest)
 
 ## Resources
 
